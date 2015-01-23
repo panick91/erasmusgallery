@@ -11,31 +11,31 @@
 |
 */
 
-Route::get('/', function()
-{
-	$images = Image::all();
-	return View::make('gallery')->with('images', $images);
+// HOME PAGE ===================================
+
+
+Route::get('/', function () {
+    return View::make('index');
 });
 
-Route::get('/upload', function()
-{
-	return View::make('upload');
+// API ROUTES ==================================
+Route::group(array('prefix' => 'api'), function () {
+
+    Route::resource('images', 'GalleryController', array('only' => array('index', 'store', 'destroy')));
+    Route::any('upload', 'GalleryController@uploadImage');
 });
 
-Route::post('/upload', function()
-{
-	if (Input::hasFile('image') && Input::file('image')->isValid())
-	{
-		$image = new Image();
-		$image->timestamps = false;
-		$image->name = Input::file('image')->getClientOriginalName();
-		$image->url = rand();
-		$image->save();
-		Input::file('image')->move('public/images', $image->url . '.jpg');
-		return View::make('upload')->with('success', true);
-	}
-	else
-	{
-		return View::make('upload');
-	}
+// CATCH ALL ROUTE =============================
+App::missing(function ($exception) {
+    return View::make('index');
 });
+
+
+//Route::get('/pictures','ImageController@getImages');
+
+//Route::get('/upload', function()
+//{
+//	return View::make('upload');
+//});
+//
+//Route::post('/upload','ImageController@uploadImage');
