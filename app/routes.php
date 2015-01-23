@@ -15,7 +15,7 @@
 
 
 Route::get('/', function () {
-    return View::make('index');
+    return View::make('layout');
 });
 
 // API ROUTES ==================================
@@ -27,7 +27,7 @@ Route::group(array('prefix' => 'api'), function () {
 
 // CATCH ALL ROUTE =============================
 App::missing(function ($exception) {
-    return View::make('index');
+    return View::make('layout');
 });
 
 
