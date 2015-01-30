@@ -5,21 +5,40 @@
 angular.module('mainController', [])
 
 // inject the Comment service into our controller
-    .controller('GalleryController', function($scope, $http, Image) {
-        // object to hold all the data for the new comment form
-        $scope.galleryData = {};
+    .controller('GalleryController', function ($scope, $http, Image) {
+
 
         // loading variable to show the spinning loading icon
         $scope.loading = true;
+        $scope.currentPage = 1;
+        $scope.images = [];
+        $scope.endOfRecords = false;
 
-        // get all the comments first and bind it to the $scope.comments object
-        // use the function we created in our service
-        // GET ALL COMMENTS ==============
-        Image.get()
-            .success(function(data) {
-                $scope.images = data;
-                $scope.loading = false;
-            });
+
+        $scope.loadMore = function () {
+            if (!$scope.endOfRecords) {
+                $scope.loading = true;
+                Image.get($scope.currentPage)
+                    .success(function (data) {
+
+                        for (var i = 0; i < data.data.length; i++) {
+                            $scope.images.push(data.data[i]);
+                        }
+
+                        $scope.loading = false;
+
+                        if (data.data.length === 0) {
+                            $scope.endOfRecords = true;
+                        } else {
+                            $scope.currentPage++;
+                        }
+                    });
+            }
+        };
+
+        $scope.loadMore();
+
+        //$scope.loadMore();
 
         //// function to handle submitting the form
         //// SAVE A COMMENT ================

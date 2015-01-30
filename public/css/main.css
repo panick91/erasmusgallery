@@ -1,22 +1,35 @@
 body {
-    padding: 50px;
     font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #777;
     font-weight: 300;
 }
 
+.container{
+    margin-top:50px;
+}
+
 .storyContainer{
+    visibility: hidden;
+    opacity: 0;
     padding:50px 0px;
 }
 
 .image{
     width: 100%;
+    position:relative;
+    z-index: 100;
 }
 
 .info{
     width: 100%;
 }
 
+
+.show{
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s linear;
+}
 
 
 @media(min-width: 1200px){
@@ -34,6 +47,7 @@ body {
         float:left;
         width: 50%;
         padding-left:30px;
+        /*margin-left:-600px;*/
     }
     .info>h2{
         margin-top:0px;
@@ -79,3 +93,60 @@ body {
     margin-bottom: 0;
 }
 
+
+
+
+
+
+.spinner {
+    margin: 100px auto;
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.spinner > div {
+    background-color: #333;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+
+    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+    animation: stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+
+@-webkit-keyframes stretchdelay {
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+    20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes stretchdelay {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }  20% {
+           transform: scaleY(1.0);
+           -webkit-transform: scaleY(1.0);
+       }
+}

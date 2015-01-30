@@ -14,8 +14,10 @@ class CreateImagesTable extends Migration {
 	{
 		Schema::create('images',function($table){
 			$table->increments('id');
-			$table->string('name');
+			$table->string('title');
 			$table->string('url',255);
+			$table->text('description');
+			$table->integer('order');
 		});
 	}
 

@@ -5,12 +5,13 @@ var galleryApp = angular.module('galleryApp', [
     'ngRoute',
     'mainController',
     'galleryService',
-    'flow'
+    'flow',
+    'infinite-scroll'
 ]);
 
 
 galleryApp.config(['$routeProvider', '$controllerProvider',
-    function($routeProvider) {
+    function ($routeProvider) {
         $routeProvider.
             when('/', {
                 templateUrl: 'views/partials/gallery.php',
@@ -29,12 +30,12 @@ galleryApp.config(['$routeProvider', '$controllerProvider',
 galleryApp.config(['flowFactoryProvider', function (flowFactoryProvider) {
     flowFactoryProvider.defaults = {
         target: 'api/upload',
-        testChunks:false,
+        testChunks: false,
         permanentErrors: [404, 500, 501],
         maxChunkRetries: 1,
         chunkRetryInterval: 5000,
         simultaneousUploads: 4,
-        chunkSize:1024*1024
+        chunkSize: 1024 * 1024
     };
     flowFactoryProvider.on('catchAll', function (event) {
         console.log('catchAll', arguments);
@@ -42,3 +43,30 @@ galleryApp.config(['flowFactoryProvider', function (flowFactoryProvider) {
     // Can be used with different implementations of Flow.js
     // flowFactoryProvider.factory = fustyFlowFactory;
 }]);
+
+
+galleryApp.directive('imageonload', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            element.bind('load', function () {
+
+                scope.loading=false;
+                element.parent().addClass('show');
+
+            });
+        }
+    };
+});
+//
+//galleryApp.directive('scroller', function ($window) {
+//    return function (scope, elem, attrs) {
+//        var rawElement = elem[0];
+//        angular.element($window).bind("scroll", function () {
+//            if ((rawElement.children[1].scrollTop + rawElement.offsetHeight + 5) >= rawElement.scrollHeight) { //new
+//                scope.$apply('loadMore()');
+//                //alert('bottom');
+//            }
+//        });
+//    }
+//});

@@ -6,6 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular-route.min.js"></script>
 
     <script src="js/vendor/ng-flow.min.js"></script>
+    <script src="js/vendor/ng-infinite-scroll.js"></script>
 
 
     <!-- ANGULAR -->
@@ -17,11 +18,33 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link href="css/main.css" rel="stylesheet"/>
 </head>
-<body class="container" ng-controller="GalleryController">
+<body  ng-controller="GalleryController" >
 <header>
-    <a href="#/">Home</a>
-    <a href="#/upload">Upload</a>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/">Gallery</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#/">Home <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#/upload">Upload</a></li>
+
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
 </header>
-<div ng-view></div>
+<div class="container" ng-view></div>
 </body>
 </html>

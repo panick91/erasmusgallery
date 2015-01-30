@@ -10,23 +10,24 @@ class GalleryController extends \BaseController
      */
     public function index()
     {
-        return Response::json(Image::all());
+        return Response::json(Image::orderBy('order')->paginate(2));
     }
 
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param $name
+     * @param $title
      * @param $url
      * @return Response
      */
-    private function store($name, $url)
+    private function store($title, $url, $fileExtension)
     {
         $image = new Image();
         $image->timestamps = false;
-        $image->name = $name;
+        $image->title = $title;
         $image->url = $url;
+        $image->fileExtension = $fileExtension;
         $image->save();
         return Response::json(array('success' => true));
     }
@@ -53,6 +54,7 @@ class GalleryController extends \BaseController
             'tempDir' => public_path() . '/images/chunks'
         ));
         $file = new \Flow\File($config, $request);
+        var_dump('test');
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             if (!$file->checkChunk()) {
@@ -91,7 +93,7 @@ class GalleryController extends \BaseController
 
             rename($destination, $destination . $fileExtension);
 
-            $this->store($request->getFileName(), $filename . $fileExtension);
+            $this->store($request->getFileName(), $filename, $fileExtension);
         }
 
         $response = Response::make('pass some success message to flow.js', 200);

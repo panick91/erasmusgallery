@@ -13,5 +13,9 @@ class Image extends Eloquent{
      *
      * @var array
      */
-    protected $hidden = array('id', 'name');
+    protected $hidden = array('id');
+
+//    public static function all(){
+//        return Image::orderBy('order')->get();
+//    }
 }

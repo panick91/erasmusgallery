@@ -8,8 +8,8 @@ angular.module('galleryService', [])
 
         return {
             // get all the comments
-            get : function() {
-                return $http.get('/api/images');
+            get : function(page) {
+                return $http.get('/api/images?page='+page);
             },
 
             // destroy a comment
