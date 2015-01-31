@@ -58,15 +58,4 @@ galleryApp.directive('imageonload', function () {
         }
     };
 });
-//
-//galleryApp.directive('scroller', function ($window) {
-//    return function (scope, elem, attrs) {
-//        var rawElement = elem[0];
-//        angular.element($window).bind("scroll", function () {
-//            if ((rawElement.children[1].scrollTop + rawElement.offsetHeight + 5) >= rawElement.scrollHeight) { //new
-//                scope.$apply('loadMore()');
-//                //alert('bottom');
-//            }
-//        });
-//    }
-//});
+

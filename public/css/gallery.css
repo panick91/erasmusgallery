@@ -1,0 +1,13 @@
+.navbar>.container-fluid,
+.navbar>.container-fluid>.navbar-collapse{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+
+.galleryHeader{
+    background: url('../images/resources/fog_web.jpg') no-repeat 0 30%;
+    background-size: 100% auto;
+    width: 100%;
+    height: 600px;
+}

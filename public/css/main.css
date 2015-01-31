@@ -4,10 +4,6 @@ body {
     font-weight: 300;
 }
 
-.container{
-    margin-top:50px;
-}
-
 .storyContainer{
     visibility: hidden;
     opacity: 0;

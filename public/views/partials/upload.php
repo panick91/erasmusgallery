@@ -1,4 +1,6 @@
-<div flow-init
+<div ng-include="'views/partials/navigation.php'" navigation></div>
+<div class="container"
+     flow-init
      flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1,bmp:1}[$file.getExtension()]"
      flow-files-submitted="$flow.upload()">
     <h1>Upload section</h1>
