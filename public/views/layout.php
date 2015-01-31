@@ -7,6 +7,8 @@
 
     <script src="js/vendor/ng-flow.min.js"></script>
     <script src="js/vendor/ng-infinite-scroll.js"></script>
+<!--    <script src="js/vendor/ui-utils.js"></script>-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>-->
 
 
     <!-- ANGULAR -->

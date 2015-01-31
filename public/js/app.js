@@ -51,11 +51,67 @@ galleryApp.directive('imageonload', function () {
         link: function (scope, element, attrs) {
             element.bind('load', function () {
 
-                scope.loading=false;
-                element.parent().addClass('show');
+                scope.loading = false;
+                element.parent().parent().addClass('show');
 
             });
         }
     };
 });
 
+galleryApp.directive('navigation', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            var origOffsetY = element.offset().top;
+
+            function scroll() {
+                if ($(window).scrollTop() >= origOffsetY) {
+                    element.addClass('navbar-fixed-top');
+                } else {
+                    element.removeClass('navbar-fixed-top');
+                }
+            }
+            document.onscroll = scroll;
+        }
+    };
+});
+
+galleryApp.directive('iNavigation', function () {
+    return {
+        restrict: "E",
+        replace: true,
+        templateUrl: "views/snippets/navigation.html"
+
+    }
+});
+
+galleryApp.directive('iStory', function () {
+    return {
+        restrict: "E",
+        replace: true,
+        templateUrl: "views/snippets/story.html"
+
+    }
+});
+//
+//$(document).ready(function () {
+//
+//    var menu = $('.navbar');
+//    var origOffsetY = menu.offset().top;
+//
+//    function scroll() {
+//        if ($(window).scrollTop() >= origOffsetY) {
+//            $('.navbar').addClass('navbar-fixed-top');
+//            //$('.content').addClass('menu-padding');
+//        } else {
+//            $('.navbar').removeClass('navbar-fixed-top');
+//            //$('.content').removeClass('menu-padding');
+//        }
+//
+//
+//    }
+//
+//    document.onscroll = scroll;
+//
+//});

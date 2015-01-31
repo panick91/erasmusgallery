@@ -3,51 +3,11 @@ body {
     color: #777;
     font-weight: 300;
 }
-
-.storyContainer{
-    visibility: hidden;
-    opacity: 0;
-    padding:50px 0px;
-}
-
-.image{
-    width: 100%;
-    position:relative;
-    z-index: 100;
-}
-
-.info{
-    width: 100%;
-}
-
-
-.show{
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.5s linear;
-}
-
-
-@media(min-width: 1200px){
-    .storyContainer{
-        overflow: hidden;
-        margin-bottom: 50px;
-    }
-
-    .image{
-        float:left;
-        width: 50%;
-    }
-
-    .info{
-        float:left;
-        width: 50%;
-        padding-left:30px;
-        /*margin-left:-600px;*/
-    }
-    .info>h2{
-        margin-top:0px;
-    }
+.navbar.affix {
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    width: 100%
 }
 
 
